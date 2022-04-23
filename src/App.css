@@ -12,14 +12,16 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+body{
+  height: 100vh;
+  background-image: linear-gradient(#4CA1AF,#C4E0E5);
+}
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   align-items: center;
-  justify-content: center;
+   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -35,4 +37,89 @@
   to {
     transform: rotate(360deg);
   }
+}
+.header{
+  color:black;
+  font-weight: 300;
+  text-align: center;
+  margin: 50px 20px 60px 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.task-input {
+  width: 500px;
+  padding: 15px 10px 10px 20px;
+  margin-right: 10px;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 25px;
+  color: #ccc;
+  background-color: #1d222b;
+  border: 1px solid #444;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.buttons {
+  display: flex;
+}
+.btn {
+  margin: 10px;
+}
+
+.add-task-btn {
+  min-width: 100px;
+  background-color: #790e43;
+  color: #ccc;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  outline: none;
+  cursor: pointer;
+}
+.task-btn {
+cursor: pointer;
+background-color: transparent;
+border: none;
+outline: none;
+}
+.clear-btn {
+  width: 100px;
+  height: 35px;
+  background-color: #790e43;
+  color: #ccc;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  outline: none;
+  cursor: pointer;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(39, 41, 43, 0.2) 0px 8px 24px;
+  margin: 4px auto;
+  padding: 16px;
+  border-radius: 20px;
+  width: 80%;
+}
+
+.todo-row input {
+  margin-right: 10px;
 }
