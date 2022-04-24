@@ -5,6 +5,9 @@ import Task from './Components/Task';
 
 function App() {
  const[todos,setTodos]=useState<Array<Todo>>([]);
+ const[result,searchresult]=useState<Array<Todo>>([])
+ const[sortresult,setsortresult]=useState<Array<Todo>>([])
+ const[sortval,setsort]=useState(false);
   const addTodo:AddTodo=(newTodo)=>{
     console.log('inside to do');
     const newTod:string=newTodo.trim();
@@ -14,6 +17,7 @@ function App() {
   const clearTodo:ClearTodo=()=>{
     console.log('inside clear');
    setTodos([])
+   searchresult([])
   }
   const todoDelete:TodoDelete=(id)=>{
     // console.log('inside delete');
@@ -36,11 +40,44 @@ function App() {
     })
      setTodos(output);
   }
-  
+  const todoSearch:TodoSearch=(text)=>{
+        console.log('inside search at app');
+        console.log(text,'text passed to search');
+        if(text.length>0){
+          const output=todos.filter((todo)=>{
+            if(todo.text.toLowerCase().includes(text.toLowerCase())){
+              return todo;
+            }
+     })
+    //  console.log(todos,'checking todo state in filter ');
+     searchresult(output)
+     }
+     else{
+       searchresult([])
+     }
+        
+  }
+  const todosort:Todosort=(sortstatus)=>{
+    console.log('inside sort in app');
+    console.log(sortstatus);
+    setsort(sortstatus);
+     if(sortval==true)
+     {
+      const output=todos.sort((a,b)=>a.text.localeCompare(b.text));
+      setsortresult(output);
+     } 
+  }
   return (
     <>
-    <Taskform addTodo={addTodo} clearTodo={clearTodo}/>
-     <Task todos={todos}  todoDelete={todoDelete}  todoEdit={todoEdit} />
+   {console.log('render')}
+    <Taskform addTodo={addTodo} clearTodo={clearTodo} todoSearch={todoSearch} todosort={todosort}/>
+    {
+       sortval===false?
+        <Task todos={result.length<1?todos:result}  todoDelete={todoDelete}  todoEdit={todoEdit} />
+       :
+       (  <Task todos={result.length<1?sortresult:result}  todoDelete={todoDelete}  todoEdit={todoEdit} />)
+    }
+    
     </>
   );
 }

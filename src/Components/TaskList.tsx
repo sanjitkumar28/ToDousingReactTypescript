@@ -3,10 +3,12 @@ interface TodoListItemProps {
     todo: Todo;
     todoDelete:(id:number)=>void;
     todoEdit:(id:number,text:string)=>void;
+
 }
 export default function TaskList({todo,todoDelete,todoEdit}:TodoListItemProps) {
   const [editToDoText,seteditToDoText]=useState(' ');
-  const[editToDo,editToDoChange]=useState(false)
+  const[editToDo,editToDoChange]=useState(false);
+ 
   const handleDelete=(id:number)=>{
       console.log('inside handle delete');
       console.log(id);
