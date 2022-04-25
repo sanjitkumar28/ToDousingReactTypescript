@@ -1,4 +1,7 @@
-import React, { useState,ChangeEvent ,FormEvent} from 'react'
+import React, { useState,ChangeEvent ,FormEvent, useEffect} from 'react'
+import {Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import SortResult from './SortResult';
 type AddTodo = (newTodo: string) => void;
 interface TodoFormProps {
@@ -35,9 +38,12 @@ export default function Taskform({addTodo,clearTodo,todoSearch,todosort}:TodoFor
     
     todoSearch(e.target.value);
   }  
+  const sortupdate=(status:boolean)=>{
+    setsort(status);
+  }
   const handleSort=(event: React.MouseEvent<HTMLElement>)=>{
     event.preventDefault();
-      setsort(true);
+    sortupdate(true);
     todosort(sort);
   }
   const handleUnSort=(event: React.MouseEvent<HTMLElement>)=>{
@@ -107,6 +113,10 @@ export default function Taskform({addTodo,clearTodo,todoSearch,todosort}:TodoFor
            <button className="btn clear-btn" onClick={handleSort}>
                Sort 
            </button>
+           {/* <button>
+           <Link to="/sortresult" style={{ color: '#FFF',textDecoration: 'none' }}>Sort</Link>
+           </button> */}
+             
            <button className="btn clear-btn" onClick={handleUnSort}>
                UnSorted 
            </button>

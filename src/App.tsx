@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import Taskform from './Components/Taskform';
 import Task from './Components/Task';
-
+import { BrowserRouter , Routes, Route, Link } from "react-router-dom";
+import SortResult from './Components/SortResult';
 function App() {
  const[todos,setTodos]=useState<Array<Todo>>([]);
  const[result,searchresult]=useState<Array<Todo>>([])
@@ -59,7 +60,7 @@ function App() {
   }
   const todosort:Todosort=(sortstatus)=>{
     console.log('inside sort in app');
-    console.log(sortstatus);
+    console.log('sortstatus',sortstatus);
     setsort(sortstatus);
      if(sortval==true)
      {
@@ -67,6 +68,16 @@ function App() {
       setsortresult(output);
      } 
   }
+  // const todosort:Todosort=(sortstatus)=>{
+    // setsort(sortstatus);
+  //   console.log('inside sort');
+    
+  //    if(sortval==true)
+  //    {
+  //     const output=todos.sort((a,b)=>a.text.localeCompare(b.text));
+  //     setTodos(output);
+  //    } 
+  // }
   return (
     <>
    {console.log('render')}
@@ -77,7 +88,12 @@ function App() {
        :
        (  <Task todos={result.length<1?sortresult:result}  todoDelete={todoDelete}  todoEdit={todoEdit} />)
     }
-    
+     {/* <Task todos={result.length<1?todos:result}  todoDelete={todoDelete}  todoEdit={todoEdit} /> */}
+    <BrowserRouter>
+    <Routes>
+      <Route path="/sortresult" element={<SortResult />} />
+      </Routes>
+  </BrowserRouter> 
     </>
   );
 }

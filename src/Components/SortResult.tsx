@@ -4,7 +4,7 @@ export default function SortResult() {
 
   return (
     <div>
-      hello
+      <h1>Inside sort result</h1>
     </div>
   )
 }
